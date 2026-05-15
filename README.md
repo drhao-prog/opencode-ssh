@@ -5,6 +5,8 @@ Run opencode on a remote server. Say "ssh myHost" and all commands run remotely.
 - No need to install opencode remotely or expose API keys on the server.
 - Reuses the same open ssh connection for performance, remembers last working folder, remote open docker connections etc.
 
+Use to rapidly investigate incidents on remote servers, troubleshoot, analyze logs, data etc.
+
 ## Setup
 
 **1. Copy the plugin**
