@@ -1,3 +1,5 @@
+Made a switch to ssh alternative: https://github.com/trzsz/trzsz-ssh, sshpass got rate limit if called too frequent, by utilizing SSH Multiplexing (also known as a persistent ControlMaster connection) combined with tssh, the mod is able to overcome ssh's frequent connection.
+
 # opencode-ssh
 
 Run opencode on a remote server. Say "ssh myHost" and all commands run remotely.
