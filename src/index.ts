@@ -48,12 +48,12 @@ export default {
             const existing = sessionMap.get(ctx.sessionID)
             if (existing) {
               try {
-                execSync(`ssh -O stop -S "${existing.socketPath}" "${existing.host}"`, { stdio: "pipe" })
+                execSync(`tssh -O stop -S "${existing.socketPath}" "${existing.host}"`, { stdio: "pipe" })
               } catch {}
             }
 
             try {
-              execSync(`ssh -MNf -S "${socketPath}" "${host}" 2>&1`, { stdio: "pipe", timeout: 15000 })
+              execSync(`tssh -MNf -S "${socketPath}" "${host}" 2>&1`, { stdio: "pipe", timeout: 15000 })
             } catch (e) {
               const msg = e instanceof Error ? e.message : String(e)
               return `Failed to connect to ${host}: ${msg}`
@@ -80,7 +80,7 @@ export default {
             if (!state) return "Not currently connected."
 
             try {
-              execSync(`ssh -O stop -S "${state.socketPath}" "${state.host}"`, { stdio: "pipe" })
+              execSync(`tssh -O stop -S "${state.socketPath}" "${state.host}"`, { stdio: "pipe" })
             } catch {}
             sessionMap.delete(ctx.sessionID)
 
@@ -95,8 +95,8 @@ export default {
 
         if (input.tool === "bash") {
           const cmd = output.args.command
-          if (cmd.startsWith(`ssh -S "${state.socketPath}"`)) return
-          output.args.command = `ssh -S "${state.socketPath}" "${state.host}" ${cmd}`
+          if (cmd.startsWith(`tssh -S "${state.socketPath}"`)) return
+          output.args.command = `tssh -S "${state.socketPath}" "${state.host}" ${cmd}`
           if (output.args.description) {
             output.args.description = `[remote ${state.host}] ${output.args.description}`
           }
