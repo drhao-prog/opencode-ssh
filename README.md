@@ -1,4 +1,4 @@
-Made a switch to ssh alternative: https://github.com/trzsz/trzsz-ssh, sshpass got rate limit if called too frequent, by utilizing SSH Multiplexing (also known as a persistent ControlMaster connection) combined with tssh, the mod is able to overcome ssh's frequent connection.
+Made a switch to ssh alternative: https://github.com/trzsz/trzsz-ssh, sshpass got rate limit if called too frequently, by utilizing SSH Multiplexing (also known as a persistent ControlMaster connection) combined with tssh, the mod is able to overcome openssh's frequent connection lockup.
 
 # opencode-ssh
 
